@@ -1,2 +1,2 @@
 A Chinese checkers game where you can play against the computer!!
-[image](https://user-images.githubusercontent.com/79788560/232290246-c1d0f2e8-af7e-4b85-9e07-cc2109210885.png)
+![image](https://user-images.githubusercontent.com/79788560/232290275-57be3298-7cfc-4937-b304-89edfe3b8cc8.png)
