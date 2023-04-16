@@ -1,1 +1,1 @@
-# chuinese-checkers
+# chinese-checkers
