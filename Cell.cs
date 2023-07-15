@@ -1,15 +1,19 @@
 using System;
-using System.Windows.Forms;
-using System.Drawing;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Chinese_Checkers_
+namespace AI
 {
-    public enum Typecell {EMPTY, GREEN, PINK, YELLOW};
+    public enum CellType { EMPTY, GREEN, PINK, YELLOW };
     public class Cell : PictureBox
     {
+        public event EventHandler On_Click;
+
         int row, col;
-        Typecell sug;
-        public const int CellSize = 77;
+        CellType sug;
+        public const int CellSize = 73;
 
         public Cell(int row, int col)
         {
@@ -21,35 +25,30 @@ namespace Chinese_Checkers_
 
             if (row < 3 && col < 3)
             {
-                this.sug = Typecell.GREEN;
-                this.Image = Chinese_Checkers_.Resource1.green;
+                this.sug = CellType.GREEN;
+                this.Image = AI.Resource1.greenP;
             }
             else
             {
                 if (row > 4 && col > 4)
                 {
-                    this.sug = Typecell.PINK;
-                    this.Image = Chinese_Checkers_.Resource1.pink;
+                    this.sug = CellType.PINK;
+                    this.Image = AI.Resource1.pinkP;
                 }
                 else
                 {
-                    this.sug = Typecell.EMPTY;
-                    this.Image = Chinese_Checkers_.Resource1.empty;
+                    this.sug = CellType.EMPTY;
+                    this.Image = AI.Resource1.emptyP;
                 }
             }
         }
 
-        public event EventHandler codeYellow;
-
         void Cell_Click(object sender, EventArgs e)
         {
-            Cell clicked_cell = (Cell)sender;
-            codeYellow?.Invoke(this, EventArgs.Empty);
+            On_Click?.Invoke(this, EventArgs.Empty);
         }
-       
-        /// <summary>
-        /// SET and GET functions
-        /// </summary>
+
+        
         #region Properties
         public int ROW
         {
@@ -61,7 +60,7 @@ namespace Chinese_Checkers_
             get { return this.col; }
             set { this.col = value; }
         }
-        public Typecell SUG
+        public CellType SUG
         {
             get { return this.sug; }
             set { this.sug = value; }
