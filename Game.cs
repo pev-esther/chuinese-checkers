@@ -13,7 +13,7 @@ namespace AI
     public partial class game_Board : UserControl
     {
         public event EventHandler OnTurnChanged;
-        public event EventHandler<HowWon> OnWin;
+        public event EventHandler<whoWon> OnWin;
         bool? against_computer;
         Player pink_player = new Player(CellType.PINK);
         Player green_player = new Player(CellType.GREEN);
