@@ -1,0 +1,15 @@
+  public class whoWon: EventArgs
+    {
+        CellType _won;
+        public whoWon(CellType how)
+        {
+            this._won = how;
+        }
+        public string get_who_won()
+        {
+            if (_won == CellType.GREEN)
+                return "green";
+            else
+                return "pink";
+        }
+    }
