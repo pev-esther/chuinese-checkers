@@ -1,25 +1,25 @@
-
-
-namespace Chinese_Checkers_
+namespace AI
 {
-    public class Move  
+    public class Move
     {
-        Typecell hows_move_is_it;
+        CellType hows_move_is_it;
         Spot Source, Dest;
         public Move()
         {
 
         }
-        public Move(Move m1)
-        {
-            this.hows_move_is_it = m1.hows_move_is_it;
-            this.SOURCE = m1.SOURCE;
-            this.Dest = m1.DEST;
-        }
+      
         public Move(Cell Source, Cell Dest)
         {
             this.Source = new Spot(Source.ROW, Source.COL);
             this.Dest = new Spot(Dest.ROW, Dest.COL);
+            this.hows_move_is_it = Source.SUG;
+        }
+
+        public Move(Cell Source, Spot Dest)
+        {
+            this.Source = new Spot(Source.ROW, Source.COL);
+            this.Dest = new Spot(Dest.ROW_NUM, Dest.COL_NUM);
             this.hows_move_is_it = Source.SUG;
         }
 
@@ -34,8 +34,8 @@ namespace Chinese_Checkers_
             get { return this.Dest; }
             set { this.Dest = value; }
         }
-      
-        public Typecell HOWS
+
+        public CellType HOWS
         {
             get { return this.hows_move_is_it; }
             set { this.hows_move_is_it = value; }
@@ -43,4 +43,5 @@ namespace Chinese_Checkers_
         #endregion
 
     }
+
 }
