@@ -91,8 +91,8 @@ namespace AI
                 else
                 {
                     List<Move> l_moves = new List<Move>();
-                    Destanitions.give_possible_destanations1(this, cell, l_moves);
-                    Destanitions.give_possible_destanations2(this, cell, l_moves);
+                    Destinations.give_possible_destinations1(this, cell, l_moves);
+                    Destinations.give_possible_destinations2(this, cell, l_moves);
                     show_the_possible_dest_on_screen_aka_yellow_fish(l_moves);
                     this.Refresh();
 
@@ -126,8 +126,9 @@ namespace AI
                     }
 
                 }
+                OnTurnChanged?.Invoke(this, EventArgs.Empty);
             }
-            OnTurnChanged?.Invoke(this, EventArgs.Empty);
+            
         }
         private bool win()
         {
@@ -135,7 +136,7 @@ namespace AI
             {
                 if (green_player.IsWin())
                 {
-                    OnWin?.Invoke(this, new HowWon(CellType.GREEN));
+                    OnWin?.Invoke(this, new whoWon(CellType.GREEN));
                     return true;
                 }
                 else
@@ -145,7 +146,7 @@ namespace AI
             {
                 if (pink_player.IsWin())
                 {
-                    OnWin?.Invoke(this, new HowWon(CellType.PINK));
+                    OnWin?.Invoke(this, new whoWon(CellType.PINK));
                     return true;
                 }
                 else
