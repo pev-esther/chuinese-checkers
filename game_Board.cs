@@ -17,14 +17,13 @@ namespace AI
         Player pink_player = new Player(CellType.PINK);
         Player green_player = new Player(CellType.GREEN);
         Turn turn = new Turn(CellType.GREEN);
-
         Move m = new Move();
         public bool? against_the_computer;
         bool firstClick = true;
-
         Cell[,] board = new Cell[number_of_rows, number_of_cols];
         const int number_of_rows = 8;
         const int number_of_cols = 8;
+    
         public game_Board()
         {
             for (int i = 0; i < number_of_rows; i++)
@@ -92,7 +91,7 @@ namespace AI
                     List<Move> l_moves = new List<Move>();
                     Destinations.give_possible_destinations1(this, cell, l_moves);
                     Destinations.give_possible_destinations2(this, cell, l_moves);
-                    show_the_possible_dest_on_screen_aka_yellow_fish(l_moves);
+                    show_the_possible_dest_on_screen(l_moves);
                     this.Refresh();
 
                 }
@@ -164,7 +163,7 @@ namespace AI
                 }
             }
         }
-        public void show_the_possible_dest_on_screen_aka_yellow_fish(List<Move> l)
+        public void show_the_possible_dest_on_screen(List<Move> l)
         {
             foreach (Move m in l)
             {
