@@ -14,7 +14,6 @@ namespace AI
     {
         public event EventHandler OnTurnChanged;
         public event EventHandler<whoWon> OnWin;
-        bool? against_computer;
         Player pink_player = new Player(CellType.PINK);
         Player green_player = new Player(CellType.GREEN);
         Turn turn = new Turn(CellType.GREEN);
