@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AI
 {
-    public static class Destanitions
+    public static class Destinations
     {
         private static int[,] Dir = {
                          { -2,  0 }, // Up
@@ -22,7 +22,7 @@ namespace AI
                              };
         public static bool IsLegal(int row, int col) => row >= 0 && row <= 7 && col >= 0 && col <= 7;
 
-        public static void give_possible_destanations1(game_Board board, Cell src, List<Move> possible_moves)
+        public static void give_possible_destinations1(game_Board board, Cell src, List<Move> possible_moves)
         {
             for (int dir = 0; dir < 4; dir++)
             {
@@ -38,7 +38,7 @@ namespace AI
                 }
             }
         }
-        public static void give_possible_destanations2_Aux(game_Board board, Cell src, Cell RealSrc, int i, int j, List<Move> possible_moves, int wayN)
+        public static void give_possible_destinations2_Aux(game_Board board, Cell src, Cell RealSrc, int i, int j, List<Move> possible_moves, int wayN)
         {
             for (int dir = 0; dir < 4; dir++)
             {
@@ -53,14 +53,14 @@ namespace AI
                     {
                         Move a_move = new Move(RealSrc, board.Get_I_J_cell(row, col));
                         possible_moves.Add(a_move);
-                        give_possible_destanations2_Aux(board, board.Get_I_J_cell(row, col), RealSrc, row, col, possible_moves, (dir + 2) % 4);
+                        give_possible_destinations2_Aux(board, board.Get_I_J_cell(row, col), RealSrc, row, col, possible_moves, (dir + 2) % 4);
                     }
                 }
             }
         }
-        public static void give_possible_destanations2(game_Board board, Cell src, List<Move> possible_moves)
+        public static void give_possible_destinations2(game_Board board, Cell src, List<Move> possible_moves)
         {
-            give_possible_destanations2_Aux(board, src, src, src.ROW, src.COL, possible_moves, -1);
+            give_possible_destinations2_Aux(board, src, src, src.ROW, src.COL, possible_moves, -1);
         }
 
     }
